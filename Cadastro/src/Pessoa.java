@@ -1,3 +1,6 @@
+import java.util.Date;
+import java.util.Objects;
+
 public class Pessoa{
     public static String tipo = "PESSOA";
     private String nome;
@@ -32,6 +35,19 @@ public class Pessoa{
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cidade = cidade;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pessoa pessoa = (Pessoa) o;
+        return Objects.equals(nome, pessoa.nome) && Objects.equals(sobrenome, pessoa.sobrenome) && Objects.equals(cidade, pessoa.cidade);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, sobrenome, cidade);
     }
 
     @Override
